@@ -5,8 +5,54 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Raksti_1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="MainWindow" Height="450" Width="800"
+        KeyDown="F1_Key_Down">
+    <DockPanel HorizontalAlignment="Left" Height="417" LastChildFill="False" VerticalAlignment="Top" Width="800">
+        <ToolBar Height="42" VerticalAlignment="Top" DockPanel.Dock="Top" Margin="0,0,10,0">
+            <Label Content="m = " HorizontalAlignment="Center" VerticalAlignment="Center" Margin="15,0,0,0" />
+            <TextBox Name="scaleFactorField" MinWidth="80" Text="1" />
+            <Button Name="PenColorBtn" Content="PenColor" Margin="30,0,0,0" FontFamily="Source Code Pro" FontSize="14" Click="Button_Click" />
+            <Button x:Name="BrushColorBtn" Content="BrushColor" Margin="30,0,0,0" FontFamily="Source Code Pro" FontSize="14" Click="Button_Click_1" />
+            <Button Name="BackgroundColorBtn" Content="BackColor" Margin="30,0,0,0"  FontFamily="Source Code Pro" FontSize="14" Click="Button_Click_2"/>
+            <Button Content="Paint" Margin="30,0,0,0"  FontFamily="Source Code Pro" FontSize="14" Click="onPaint" />
+        </ToolBar>
+        <Grid Height="375" DockPanel.Dock="Top" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,10,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="395*"/>
+                <ColumnDefinition Width="395*"/>
+            </Grid.ColumnDefinitions>
+            <WrapPanel Grid.Column="0" HorizontalAlignment="Stretch">
+                <Grid Width="370" Margin="10,25,0,0" HorizontalAlignment="Stretch">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="100" />
+                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="100"/>
+                    </Grid.RowDefinitions>
+                    <RadioButton Name="firstImgSelector" Grid.Column="0" Grid.Row="0" Tag="1" Checked="graphicsSelected" Margin="0,0,0,15">
+                        <Canvas Name="firstImg" Width="150" Height="100"/>
+                    </RadioButton>
+                    <RadioButton Name="secondImgSelector" Grid.Column="1" Grid.Row="0" Tag="2" Checked="graphicsSelected" Margin="0,0,0,15">
+                        <Canvas Name="secondImg" Width="150" Height="100" />
+                    </RadioButton>
+                    <RadioButton Name="thirdImgSelector" Grid.Column="0" Grid.Row="1" Tag="3" Checked="graphicsSelected" Margin="0,0,0,15">
+                        <Canvas Name="thirdImg" Width="150" Height="100"/>
+                    </RadioButton>
+                    <RadioButton Name="fourthImgSelector" Grid.Column="1" Grid.Row="1" Tag="4" Checked="graphicsSelected" Margin="0,0,0,15">
+                        <Canvas Name="fourthImg" Width="150" Height="100" />
+                    </RadioButton>
+                    <RadioButton Name="fifthImgSelector" Grid.Column="0" Grid.Row="2" Tag="5" Checked="graphicsSelected">
+                        <Canvas Name="fifthImg" Width="150" Height="100"/>
+                    </RadioButton>
+                </Grid>
+            </WrapPanel>
+            <GridSplitter Width="10"/>
+            <Canvas Grid.Column="1" Name="canvasBackground" Background="White">
+                <Canvas Name="drawingCanvasField" MinHeight="400" MinWidth="400"/>
+            </Canvas>
+        </Grid>
+    </DockPanel>
 </Window>
